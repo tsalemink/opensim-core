@@ -126,9 +126,8 @@ public:
     /// Construct or default-convert a translation (expressed as a Vec3)
     /// into a transform with that translation and a zero rotation.
     Transform_( const Vec<3,P>& p ) : R_BF(),  p_BF(p) { }
-
+#    ifndef SWIG
     // default copy, assignment, destructor
-#ifndef SWIG
     /// Assignment from InverseTransform. This means that the 
     /// transform we're assigning to must end up with the same @em meaning
     /// as the inverse transform X has, so we'll need to end up with:

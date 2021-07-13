@@ -76,11 +76,10 @@ public:
     Scale(const Scale &aMarker);
     Scale( const std::string& scaleFileName);
     virtual ~Scale(void);
-
+#ifndef SWIG
     //--------------------------------------------------------------------------
     // OPERATORS
     //--------------------------------------------------------------------------
-#ifndef SWIG
     Scale& operator=(const Scale &aMarker);
 #endif  
 private:

@@ -73,7 +73,7 @@ macro(OpenSimAddPythonModule)
     # We run swig once to get dependencies and then again to actually generate
     # the wrappers. This variable holds the parts of the swig command that
     # are shared between both invocations.
-    set(_swig_common_args -c++ -python -py3 -doxygen
+    set(_swig_common_args -c++ -python
             -I${OpenSim_SOURCE_DIR}
             -I${OpenSim_SOURCE_DIR}/Bindings/
             -I${Simbody_INCLUDE_DIR}
@@ -93,10 +93,10 @@ macro(OpenSimAddPythonModule)
         OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${OSIMSWIGPY_MODULE}.py"
             ${_output_cxx_file} ${_output_header_file}
         COMMAND ${SWIG_EXECUTABLE}
-            #-debug-tmused # Which typemaps were used?
+            #-debug-tmused 
             -v # verbose
             -o ${_output_cxx_file}
-            -doxygen
+            -py3 -doxygen -debug-doxygen-parser
             -outdir "${CMAKE_CURRENT_BINARY_DIR}"
             ${_swig_common_args}
         DEPENDS ${_${OSIMSWIGPY_MODULE}_dependencies}

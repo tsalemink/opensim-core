@@ -32,10 +32,10 @@
 
 namespace SimTK {
 
-
+#ifndef SWIG
 // The following functions are used internally by Vec.
 
-#ifndef SWIG
+
 // Hide from Doxygen.
 /** @cond **/
 namespace Impl {
@@ -118,6 +118,7 @@ copy(Vec<N,E1,S1>& r1, const Vec<N,E2,S2>& r2) {
 }
 /** @endcond **/
 #endif
+#ifndef SWIG
 /** This is a fixed length column vector designed for no-overhead inline 
 computation.
 
@@ -128,7 +129,6 @@ computation.
                     integer number of elements of type ELT. The default is 
                     STRIDE=1.
 **/
-#ifndef SWIG
 template <int M, class ELT, int STRIDE>
 #else
 template <int M, class ELT=double, int STRIDE=1>
@@ -944,11 +944,11 @@ private:
     ELT d[NActualElements];    // data
 };
 
+#ifndef SWIG
 /////////////////////////////////////////////
 // Global operators involving two vectors. //
 //   v+v, v-v, v==v, v!=v                  //
 /////////////////////////////////////////////
-#ifndef SWIG
 
 // v3 = v1 + v2 where all v's have the same length M. 
 template <int M, class E1, int S1, class E2, int S2> inline

@@ -2605,7 +2605,7 @@ protected:
     }
 
 public:
-#ifndef SWIG // StateVariable is protected.
+#ifndef SWIG 
     /**
      * Get a StateVariable anywhere in the Component tree, given a
      * StateVariable path. The StateVariable doesn't need to be in a
@@ -2690,7 +2690,7 @@ protected:
         return propIndex;
     }
 
-#ifndef SWIG // SWIG can't parse the const at the end of the second argument.
+#ifndef SWIG 
     /** Construct an output for a member function of the same component.
         The following must be true about componentMemberFunction, the function
         that returns the output:

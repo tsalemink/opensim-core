@@ -93,11 +93,11 @@ public:
     PropertySet(const PropertySet &aSet);
     PropertySet& operator=(const PropertySet& aSet);
     virtual ~PropertySet() { _array.setSize(0); };
-
+#ifndef SWIG
     //--------------------------------------------------------------------------
     // OPERATORS
     //--------------------------------------------------------------------------
-#ifndef SWIG
+
     friend std::ostream& operator<<(std::ostream &aOut,
                                                             const PropertySet &aSet) {
         aOut << "\nProperty Set:\n";

@@ -92,8 +92,8 @@ public:
     // Object printing
     static void SetPrintOfflineDocuments(bool aTrueFalse);
     static bool GetPrintOfflineDocuments();
-    // READ
 #ifndef SWIG
+    // READ
     static std::string ReadToTokenLine(std::istream &aIS,const std::string &aToken);
     static std::string ReadLine(std::istream &aIS);
     static int ComputeNumberOfSteps(double aTI,double aTF,double aDT);

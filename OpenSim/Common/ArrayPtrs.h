@@ -178,6 +178,7 @@ void clearAndDestroy()
 // OPERATORS
 //=============================================================================
 public:
+#ifndef SWIG
 //-----------------------------------------------------------------------------
 // ASSIGNMENT (=)
 //-----------------------------------------------------------------------------
@@ -193,7 +194,7 @@ public:
  * @param aArray Array to be copied.
  * @return Reference to this array.
  */
-#ifndef SWIG
+
 ArrayPtrs<T>& operator=(const ArrayPtrs<T> &aArray)
 {
     // DELETE OLD ARRAY
@@ -846,6 +847,7 @@ T* get(int aIndex)
 
     return(_array[aIndex]);
 }
+#ifndef SWIG
 //_____________________________________________________________________________
 /**
  * Get the object at a specified array index.
@@ -862,7 +864,7 @@ T* get(int aIndex)
  * at aIndex is NULL.
  * @see operator[].
  */
-#ifndef SWIG
+
 const T* get(int aIndex) const
 {
     if((aIndex<0)||(aIndex>=_size)) {
@@ -898,6 +900,7 @@ T* get(const std::string &aName)
     }
     return(_array[index]);
 }
+#ifndef SWIG
 //_____________________________________________________________________________
 /**
  * Get the first object that has a specified name.
@@ -910,7 +913,7 @@ T* get(const std::string &aName)
  * @throws Exception if no such object exists.
  * @see getIndex()
  */
-#ifndef SWIG
+
 const T* get(const std::string &aName) const
 {
     int index = getIndex(aName);

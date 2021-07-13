@@ -28,6 +28,9 @@
 /** @file
 * This file defines common base class for various IMU DataReader
 * classes that support different IMU providers
+@beginPythonOnly
+    This is specific to @b Python.
+@endPythonOnly
 */
 
 namespace OpenSim {

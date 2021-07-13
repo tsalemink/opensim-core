@@ -696,7 +696,7 @@ template <class T> inline std::string
 Property<T>::getTypeName() const {
     return TypeHelper::getTypeName();
 }
-
+#ifndef SWIG
 // Hide SimpleProperty and ObjectProperty from Doxygen; users don't need
 // to know about these.
 /** @cond **/
@@ -707,7 +707,7 @@ Property<T>::getTypeName() const {
 // This section is hidden from SWIG because of compiling issues (i.e., SWIG
 // thought these functions were part of Property in some cases, rather than
 // free functions)
-#ifndef SWIG
+
 
 /** Take the `transform` argument, convert to a Vec6, and then append
 the Vec6 to the end of the `rotTrans` Array. **/
@@ -1227,16 +1227,14 @@ TypeHelper::create(const std::string& name, bool isOne)
 inline SimpleProperty<SimTK::Transform>* Property<SimTK::Transform>::
 TypeHelper::create(const std::string& name, bool isOne) 
 {   return new SimpleProperty<SimTK::Transform>(name, isOne); }
-
+#ifndef SWIG
 // Create a self-initializing integer index for fast access to properties
 // within an Object's property table.
-#ifndef SWIG
 SimTK_DEFINE_UNIQUE_INDEX_TYPE(PropertyIndex);
 #endif
-
+#ifndef SWIG
 // Used by OpenSim_DECLARE_PROPERTY_HELPER below to control the members
 // that are used with SWIG.
-#ifndef SWIG
 #define OpenSim_DECLARE_PROPERTY_HELPER_PROPERTY_MEMBERS(name, T)           \
     /** @cond **/                                                           \
     PropertyIndex PropertyIndex_##name;                                     \

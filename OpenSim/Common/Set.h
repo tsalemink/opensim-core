@@ -165,6 +165,7 @@ setupGroups()
 // OPERATORS
 //=============================================================================
 public:
+#ifndef SWIG
 //-----------------------------------------------------------------------------
 // ASSIGNMENT (=)
 //-----------------------------------------------------------------------------
@@ -180,7 +181,7 @@ public:
  * @param set The Set to be copied.
  * @return Reference to this set.
  */
-#ifndef SWIG
+
 Set<T,C>& operator=(const Set<T,C> &set)
 {   
     Super::operator=(set);

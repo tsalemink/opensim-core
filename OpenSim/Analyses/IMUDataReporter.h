@@ -96,7 +96,8 @@ public:
     getOrientationsTable() const {
         return _orientationsReporter->getTable();
     }
-    // In memory access to IMU data as Tables Angular Velocities)
+    /// In memory access to IMU data as Tables Angular Velocities)
+    /*!< Moves the Shape */
     const TimeSeriesTable_<SimTK::Vec3>& getGyroscopeSignalsTable() const {
         return _angularVelocityReporter->getTable();
     }

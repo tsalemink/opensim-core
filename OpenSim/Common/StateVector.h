@@ -125,11 +125,11 @@ public:
     void divide(double aValue);
     void divide(const SimTK::Vector_<double>& values);
     void divide(StateVector *aStateVector);
-
+#ifndef SWIG
     //--------------------------------------------------------------------------
     // IO
     //--------------------------------------------------------------------------
-#ifndef SWIG
+
     int print(FILE *fp) const;
 #endif
 

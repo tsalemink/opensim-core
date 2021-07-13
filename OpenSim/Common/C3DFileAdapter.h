@@ -43,72 +43,19 @@ public:
     typedef std::vector<Event>                         EventTable; 
     typedef std::map<std::string, std::shared_ptr<TimeSeriesTableVec3>> Tables;
 
-    /** Enumerated list of locations in which read in forces are expressed.
-        %Measurement from force plates can be expressed by the C3DFileAdapter
-        either at the OriginOfForcePlate (the default), CenterOfPressure, or
-        the PointOfWrenchApplication. You need to call  setLocationForForceExpression
-        before invoking C3DFileAdapter::read(), otherwise the default location
-        (OriginOfForcePlate) is assumed.
-
-        In the case of the CenterOfPressure (COP), the underlying assumptions
-        are that the ground plane (in which COP is defined) passes through the
-        lab origin (0,0,0) with the Z-axis as its normal vector.
-
-        The PointOfWrenchApplication (PWA) does not assume a plane of contact.
-        The PWA is an equivalent wrench in the lab frame and computed according
-        to Shimba 1984.
-        Takeshi Shimba, An estimation of center of gravity from force platform
-        data, Journal of Biomechanics, 17(1), pp53-60, 1984.
-
-        <b>C++ example</b>
-        \code{.cpp}
-        C3DFileAdapter c3dFileAdapter;
-        c3dFileAdapter.setLocationForForceExpression(C3DFileAdapter::ForceLocation::CenterOfPressure);
-        auto tables  =  c3dFileAdapter.read("myData.c3d");
-        auto markersTable = c3dFileAdapter.getMarkersTable(tables);
-        auto forcesTable = c3dFileAdapter.getForcesTable(tables);
-        \endcode
-
-        <b>Python example</b>
-        \code{.py}
-        import opensim
-        c3dFileAdapter = opensim.C3DFileAdapter()
-        c3dFileAdapter.setLocationForForceExpression(opensim.C3DFileAdapter.ForceLocation_CenterOfPressure);
-        tables = c3dFileAdapter.read("myData.c3d")
-        markersTable = c3dFileAdapter.getMarkersTable(tables)
-        forcesTable = c3dFileAdapter.getForcesTable(tables)
-        \endcode
-
-        <b>Java example</b>
-        \code{.java}
-        C3DFileAdapter c3dFileAdapter = new C3DFileAdapter();
-        c3dFileAdapter.setLocationForForceExpression(C3DFileAdapter.ForceLocation.CenterOfPressure);
-        tables = c3dFileAdapter.read("myData.c3d");
-        TimeSeriesTableVec3 markersTable = c3dFileAdapter.getMarkersTable(tables);
-        TimeSeriesTableVec3 forcesTable = c3dFileAdapter.getForcesTable(tables);
-
-        \endcode
-
-        <b>MATLAB example</b>
-        \code{.m}
-         c3dFileAdapter = C3DFileAdapter();
-         c3dFileAdapter.setLocationForForceExpression(1);
-         tables = c3dFileAdapter.read('myData.c3d');
-         markersTable = c3dFileAdapter.getMarkersTable(tables);
-         forcesTable = c3dFileAdapter.getForcesTable(tables);
-        \endcode
-    */
     enum class ForceLocation {
-        OriginOfForcePlate       = 0,   ///< 0 : the origin of the force-plate
-        CenterOfPressure         = 1,   ///< 1 : the center of pressure
-        PointOfWrenchApplication = 2    ///< 2 : PWA as defined by Shimba, 1984
+        OriginOfForcePlate       = 0,   
+        CenterOfPressure         = 1,   
+        PointOfWrenchApplication = 2    
     };
 
     C3DFileAdapter* clone() const override;
+
     /**  C3DFileAdpater provides options for expressing the force-plate 
         measurements either as the net force and moments expressed at the 
         ForcePlateOrigin, the CenterOfPressure, or the 
-        PointOfWrenchApplication.  This function sets the option. */
+        PointOfWrenchApplication.  This function sets the option. 
+     */
     void setLocationForForceExpression(const ForceLocation location) {
         _location = location;
     }

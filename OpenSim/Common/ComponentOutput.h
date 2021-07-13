@@ -362,7 +362,7 @@ private:
     SimTK::ReferencePtr<const Output<T>> _output;
     std::string _channelName;
     
-#ifndef SWIG // These declarations cause a warning in SWIG.
+#ifndef SWIG 
     // To allow Output<T> to set the _output pointer upon copy.
     friend Output<T>::Output(const Output&);
     friend Output<T>& Output<T>::operator=(const Output&);

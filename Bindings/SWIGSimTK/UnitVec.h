@@ -33,11 +33,10 @@ Declares and defines the UnitVec and UnitRow classes. **/
 #include <iosfwd>  // Forward declaration of iostream
 
 namespace SimTK {
-
+#ifndef SWIG
 //-----------------------------------------------------------------------------
 // Forward declarations. These are templatized by precision P and and stride S
 // but always have length 3. TODO: this should be generalized to other lengths.
-#ifndef SWIG
 template <class P, int S> class UnitVec;
 template <class P, int S> class UnitRow;
 
